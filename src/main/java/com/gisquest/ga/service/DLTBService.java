@@ -15,5 +15,5 @@ public interface DLTBService
 {
     List<DLTB> intersect(String wkt, Integer srid);
 
-    Map<String, List<DLTB>> intersect(List<Area> areaList, Integer srid);
+    Map<String, List<DLTB>> intersect(List<Area> areaList);
 }

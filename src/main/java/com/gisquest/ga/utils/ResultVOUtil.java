@@ -5,7 +5,7 @@ import com.gisquest.ga.VO.ResultVO;
 /**
  * Created by swd on 2018/8/8
  *
- * @Description:
+ * 统一返回格式
  */
 public class ResultVOUtil
 {

@@ -7,13 +7,13 @@ import lombok.Getter;
  *
  * @Description:
  */
+@Getter
 public enum ResultEnum
 {
     PARAM_ERROR(1,"参数不正确"),
-    INTERSET_ERROR(10,"参数不正确");
+    GEOMETRY_EMPTY(10, "空几何");
 
     private Integer code;
-
     private String message;
 
     ResultEnum(Integer code, String message)
@@ -22,12 +22,12 @@ public enum ResultEnum
         this.message = message;
     }
 
-    public String getMessage(){
-        return this.message;
-    }
-
-    public Integer getCode()
-    {
-        return this.code;
-    }
+//    public String getMessage(){
+//        return this.message;
+//    }
+//
+//    public Integer getCode()
+//    {
+//        return this.code;
+//    }
 }

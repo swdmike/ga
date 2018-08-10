@@ -45,7 +45,7 @@ public class DLTBServiceImplTest
         List<Area> areas = new ArrayList<>();
         areas.add(area);
 
-        Map<String, List<DLTB>> intersects = dltbService.intersect(areas, appConfig.getSrid());
+        Map<String, List<DLTB>> intersects = dltbService.intersect(areas);
         PerformanceUtil.getEndTime();
         for (Map.Entry<String, List<DLTB>> entry : intersects.entrySet())
         {

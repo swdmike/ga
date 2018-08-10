@@ -1,6 +1,5 @@
 package com.gisquest.ga.controller;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gisquest.ga.VO.ResultVO;
 import com.gisquest.ga.config.AppConfig;
 import com.gisquest.ga.converter.AreaFormToAreaConverter;
@@ -12,6 +11,7 @@ import com.gisquest.ga.form.AreaForm;
 import com.gisquest.ga.service.DLTBService;
 import com.gisquest.ga.utils.ExceptionUtil;
 import com.gisquest.ga.utils.ResultVOUtil;
+import com.gisquest.ga.utils.ValidateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -27,7 +27,7 @@ import java.util.Map;
  * @Description:
  */
 @RestController
-@RequestMapping("/dltb")
+@RequestMapping("/ga/dltb")
 @Slf4j
 public class DLTBController
 {
@@ -49,8 +49,7 @@ public class DLTBController
         try
         {
             List<Area> areaList = AreaFormToAreaConverter.convert(form);
-            Integer srid = appConfig.getSrid();
-            Map<String, List<DLTB>> intersect = dltbService.intersect(areaList, srid);
+            Map<String, List<DLTB>> intersect = dltbService.intersect(areaList);
             return ResultVOUtil.success(intersect);
         }
         catch (Exception ex)
