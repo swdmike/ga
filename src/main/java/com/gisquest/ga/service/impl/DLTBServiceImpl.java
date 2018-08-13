@@ -13,6 +13,7 @@ import com.gisquest.ga.utils.ValidateUtil;
 import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -60,15 +61,17 @@ public class DLTBServiceImpl implements DLTBService
         for (Area area : areaList)
         {
             String wkt = area.getWkt();
-            wkt = GeometryUtil.simplifyWKTPolygon(wkt);
             //JWD转
             if (area.getJwd())
             {
                 String wktNew = ProjectUtil.CovertWKTPolygonJWDToXY(wkt, ellipse, cm, dai);
                 wkt = wktNew;
             }
+            else {
+                wkt = GeometryUtil.roundWKTVertices(wkt);
+            }
 
-            List<DLTB> dltbList = dltbMapper.intersect(wkt, srid);
+            List<DLTB> dltbList = intersect(wkt, srid);
             String id = area.getId();
             if (result.containsKey(id))
             {

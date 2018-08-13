@@ -34,13 +34,31 @@ public class GeometryUtilTest
         System.out.println(wktXY);
     }
 
-    @Test
-    public void simplifyWKTPolygon()
-    {
-        String wkt1 = "POLYGON ((40391008.1904 3220912.1339, 40391001.5758 3220701.7896999996, 40391214.565799996 3220701.7896999996, 40391237.0554 3220872.4463, 40391008.1904 3220912.1339))";
-        System.out.println(GeometryUtil.simplifyWKTPolygon(wkt1));
-        String wkt2 = "POLYGON ((40391008.1904 3220912.1339, 40391237.0554 3220872.4463, 40391214.565799996 3220701.7896999996, 40391001.5758 220701.7896999996, 40391008.1904 3220912.1339))";
-        System.out.println(GeometryUtil.simplifyWKTPolygon(wkt2));
-    }
+//    @Test
+//    public void simplifyWKTPolygon()
+//    {
+//        String wkt1 = "POLYGON ((40391008.1904 3220912.1339, 40391001.5758 3220701.7896999996, 40391214.565799996 3220701.7896999996, 40391237.0554 3220872.4463, 40391008.1904 3220912.1339))";
+//        System.out.println(GeometryUtil.simplifyWKTPolygon(wkt1));
+//        String wkt2 = "POLYGON ((40391008.1904 3220912.1339, 40391237.0554 3220872.4463, 40391214.565799996 3220701.7896999996, 40391001.5758 220701.7896999996, 40391008.1904 3220912.1339))";
+//        System.out.println(GeometryUtil.simplifyWKTPolygon(wkt2));
+//    }
+//
+//    @Test
+//    public void simplifyWKTPolygonWithHole()
+//    {
+//        String wkt1 = "POLYGON ((40391008 3220912, 40391237 3220872, 40391001 3220701, 40391008 3220912), (40391043 3220783, 40391043 3220866, 40391150 3220854, 40391043 3220783))";
+//        System.out.println(GeometryUtil.simplifyWKTPolygon(wkt1));
+//
+//        String wkt2 = "POLYGON ((40391008 3220912, 40391237 3220872, 40391001 3220701, 40391008 3220912), (40391043 3220783, 40391150 3220854, 40391043 3220866, 40391043 3220783))";
+//        System.out.println(GeometryUtil.simplifyWKTPolygon(wkt1));
+//    }
+//
+//    @Test
+//    public void simplifyWKTPolygonMulti()
+//    {
+//        String wkt1 = "MULTIPOLYGON (((40391029.8874 3220639.2482999992, 40391033.8561 3220441.6042, 40391206.1002 3220443.1917000003, 40391029.8874 3220639.2482999992)), ((40391047.3499 3220659.0921, 40391207.6877 3220476.5292000007, 40391203.719 3220656.7107999995, 40391047.3499 3220659.0921)))";
+//        System.out.println(GeometryUtil.simplifyWKTPolygon(wkt1));
+//    }
+
 
 }

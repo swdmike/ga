@@ -11,7 +11,6 @@ import com.gisquest.ga.form.AreaForm;
 import com.gisquest.ga.service.DLTBService;
 import com.gisquest.ga.utils.ExceptionUtil;
 import com.gisquest.ga.utils.ResultVOUtil;
-import com.gisquest.ga.utils.ValidateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -33,6 +32,7 @@ public class DLTBController
 {
     @Autowired
     private DLTBService dltbService;
+
     @Autowired
     private AppConfig appConfig;
 

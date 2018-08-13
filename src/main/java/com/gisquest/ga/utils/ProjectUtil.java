@@ -34,18 +34,29 @@ public class ProjectUtil
         while (iterator.nextPath())
         {
             Boolean startNewPath = true;
+            double[] nextStart = null;
             while (iterator.hasNextSegment())
             {
                 Segment segment = iterator.nextSegment();
-                double lgn = segment.getStartX();
-                double lat = segment.getStartY();
-                double[] xyStart = BLToXY(lgn, lat, ellipse, centralM, dai);
-                segment.setStartXY(xyStart[0], xyStart[1]);
+                double lgn, lat;
+                if (nextStart != null)
+                {
+                    lgn = segment.getStartX();
+                    lat = segment.getStartY();
+                    double[] xyStart = BLToXY(lgn, lat, ellipse, centralM, dai);
+                    segment.setStartXY(xyStart[0], xyStart[1]);
+                }
+                else
+                {
+                    //直接获取起点
+                    segment.setStartXY(nextStart[0], nextStart[1]);
+                }
                 lgn = segment.getEndX();
                 lat = segment.getEndY();
                 double[] xyEnd = BLToXY(lgn, lat, ellipse, centralM, dai);
                 segment.setEndXY(xyEnd[0], xyEnd[1]);
                 polygonNew.addSegment(segment, startNewPath);
+                nextStart = xyEnd; //保存下个线段起点
                 startNewPath = false;
             }
         }

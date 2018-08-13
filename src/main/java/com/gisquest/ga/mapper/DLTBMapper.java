@@ -3,6 +3,7 @@ package com.gisquest.ga.mapper;
 import com.gisquest.ga.domain.DLTB;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,5 +17,7 @@ import java.util.List;
 @Mapper
 public interface DLTBMapper
 {
-    List<DLTB> intersect(@Param("wkt") String wkt, @Param("srid") Integer srid);
+
+    @Cacheable(value = "intersect", key = "#p0")
+    public List<DLTB> intersect(@Param("wkt") String wkt, @Param("srid") Integer srid);
 }
