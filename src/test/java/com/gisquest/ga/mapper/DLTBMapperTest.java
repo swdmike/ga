@@ -37,7 +37,7 @@ public class DLTBMapperTest
     {
         PerformanceUtil.getStartTime();
         String wkt = "POLYGON  (( 40381330.520  3215764.164, 40381330.520  3215850.056, 40381408.062  3215846.477, 40381435.500  3215767.743, 40381330.520  3215764.164))";
-        Integer srid = 4528;//gaConfig.getSrid();
+        Integer srid = appConfig.getSrid();
         List<DLTB> intersects = dltbMapper.intersect(wkt, srid);
         PerformanceUtil.getEndTime();
         System.out.println("运行时间:" + PerformanceUtil.getUsedTime() + "ms");

@@ -1,6 +1,7 @@
 package com.gisquest.ga.mapper;
 
 import com.gisquest.ga.domain.DLTB;
+import com.gisquest.ga.dto.Area;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.cache.annotation.Cacheable;
@@ -17,7 +18,9 @@ import java.util.List;
 @Mapper
 public interface DLTBMapper
 {
+    public void delete();
 
-    @Cacheable(value = "intersect", key = "#p0")
+    public void insert(List<Area> areaList);
+
     public List<DLTB> intersect(@Param("wkt") String wkt, @Param("srid") Integer srid);
 }

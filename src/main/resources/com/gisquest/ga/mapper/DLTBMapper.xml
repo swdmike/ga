@@ -8,4 +8,22 @@
         (select dldm, dlmc, sde.st_intersection(f.shape, SDE.ST_Geometry(#{wkt},#{srid})) shape from JQDLTB3308_2017 f
         where sde.st_intersects(f.shape, SDE.ST_Geometry(#{wkt}, #{srid}))=1) t
     </select>
+    <delete id="delete">
+        truncate table draw
+    </delete>
+    <insert id="addList" parameterType="java.util.List" useGeneratedKeys="false">
+        insert into draw
+        (
+        id,
+        shape
+        )
+        <foreach item="item" index="index" collection="list" separator="union all">
+            (
+            select
+            #{item.id},
+            #{item.wkt}
+            from dual
+            )
+        </foreach>
+    </insert>
 </mapper>
