@@ -3,17 +3,13 @@ package com.gisquest.ga.service.impl;
 import com.gisquest.ga.config.AppConfig;
 import com.gisquest.ga.domain.DLTB;
 import com.gisquest.ga.dto.Area;
-import com.gisquest.ga.enums.ResultEnum;
-import com.gisquest.ga.exception.AppException;
 import com.gisquest.ga.mapper.DLTBMapper;
 import com.gisquest.ga.service.DLTBService;
 import com.gisquest.ga.utils.GeometryUtil;
 import com.gisquest.ga.utils.ProjectUtil;
 import com.gisquest.ga.utils.ValidateUtil;
-import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -38,7 +34,7 @@ public class DLTBServiceImpl implements DLTBService
     @Override
     public List<DLTB> intersect(String wkt, Integer srid)
     {
-        List<DLTB> dltbList = dltbMapper.intersect(wkt, srid);
+        List<DLTB> dltbList = dltbMapper.intersectOne(wkt, srid);
         return dltbList;
     }
 

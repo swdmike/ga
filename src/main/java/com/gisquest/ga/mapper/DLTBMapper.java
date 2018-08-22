@@ -20,7 +20,10 @@ public interface DLTBMapper
 {
     public void delete();
 
-    public void insert(List<Area> areaList);
+    public Integer insert(@Param("areas") List<Area> areas, @Param("srid") Integer srid);
 
-    public List<DLTB> intersect(@Param("wkt") String wkt, @Param("srid") Integer srid);
+    public List<DLTB> intersect();
+
+    public List<DLTB> intersectOne(@Param("wkt") String wkt, @Param("srid") Integer srid);
+
 }

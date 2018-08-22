@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gisquest.ga.mapper.DLTBMapper">
     <!--库里数据的shape写在前面，可以利用索引-->
-    <select id="intersect" resultType="DLTB">
+    <select id="intersectOne" resultType="DLTB">
         select t.dldm, t.dlmc, sde.st_area(t.shape) mj, sde.st_astext(t.shape) wkt from
         (select dldm, dlmc, sde.st_intersection(f.shape, SDE.ST_Geometry(#{wkt},#{srid})) shape from JQDLTB3308_2017 f
         where sde.st_intersects(f.shape, SDE.ST_Geometry(#{wkt}, #{srid}))=1) t
@@ -11,19 +11,22 @@
     <delete id="delete">
         truncate table draw
     </delete>
-    <insert id="addList" parameterType="java.util.List" useGeneratedKeys="false">
-        insert into draw
-        (
-        id,
-        shape
-        )
-        <foreach item="item" index="index" collection="list" separator="union all">
+    <insert id="insert">
+        insert into draw(areaid,shape)
+        <foreach item="item" collection="areas" separator="union all">
             (
             select
             #{item.id},
-            #{item.wkt}
+            sde.st_geometry(#{item.wkt}, #{srid})
             from dual
             )
         </foreach>
     </insert>
+    <select id="intersect" resultType="DLTB">
+        select sde.st_area(t.shape) mj, sde.st_astext(t.shape) wkt
+        from
+        (select sde.st_intersection(a.shape, b.shape) shape
+        from JQDLTB3308_2017 a, DRAW b
+        where sde.st_intersects(a.shape, b.shape)=1) t
+    </select>
 </mapper>

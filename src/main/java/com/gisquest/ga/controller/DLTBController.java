@@ -37,7 +37,7 @@ public class DLTBController
     private AppConfig appConfig;
 
     //创建订单
-    @PostMapping("/intersect")
+    @PostMapping("/intersectOne")
     public ResultVO<Map<String, String>> intersect(@Valid AreaForm form, BindingResult bindingResult)
     {
         if (bindingResult.hasErrors())
