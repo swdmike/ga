@@ -85,7 +85,6 @@ public class DLTBMapperTest
     }
 
     @Test
-    @Parameterized.Parameters(method = "ageValues")
     public void insert()
     {
         dltbMapper.delete();

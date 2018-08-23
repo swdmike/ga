@@ -9,10 +9,13 @@ import com.gisquest.ga.VO.ResultVO;
  */
 public class ExceptionUtil
 {
-    public static String getStackTrace(Exception e) {
+    public static String getStackTrace(Exception e)
+    {
         StringBuffer sb = new StringBuffer();
-        if (e != null) {
-            for (StackTraceElement element : e.getStackTrace()) {
+        if (e != null)
+        {
+            for (StackTraceElement element : e.getStackTrace())
+            {
                 sb.append("\r\n\t").append(element);
             }
         }

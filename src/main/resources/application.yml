@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
@@ -33,3 +34,6 @@ ga:
   centralmeridian: 120
   dai: 40
   srid: 4528
+
+server:
+  port: 1200
